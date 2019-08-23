@@ -32,5 +32,3 @@ class Connection:
                 self.access_token = obj['access_token']
             else:
                 raise Exception('unable to authenticate: ' + response.text)
-
-        return self.access_token
