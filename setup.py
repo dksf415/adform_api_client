@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="amobeeclient",
+    name="adformclient",
     version="0.1.dev0",
     author="Dean Kondo",
     author_email="deankondo@annalect.com",
