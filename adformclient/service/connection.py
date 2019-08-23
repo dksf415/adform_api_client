@@ -1,7 +1,7 @@
 import requests
 import json
 
-class Connection:
+class Connection(object):
 
     access_token = None
     url_token = "https://id.adform.com/sts/connect/token"
