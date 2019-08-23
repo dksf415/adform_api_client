@@ -3,6 +3,7 @@ import json
 
 class Connection:
 
+    access_token = None
     url_token = "https://id.adform.com/sts/connect/token"
 
     def __init__(self, client_id=None, client_secret=None, scope=None, grant_type="client_credentials"):
@@ -11,6 +12,9 @@ class Connection:
         self.scope = scope
         self.grant_type = grant_type
             
+        if self.access_token is None:
+            self.get_access_token()
+
     def get_access_token(self):
 
         data = {
