@@ -4,6 +4,7 @@ import json
 class Connection(object):
 
     access_token = None
+    response = None
     url_token = "https://id.adform.com/sts/connect/token"
 
     def __init__(self, client_id=None, client_secret=None, scope=None, grant_type="client_credentials"):
@@ -14,6 +15,7 @@ class Connection(object):
             
         if self.access_token is None:
             self.get_access_token()
+            self.get_data()
 
     def get_access_token(self):
 
@@ -32,3 +34,16 @@ class Connection(object):
                 self.access_token = obj['access_token']
             else:
                 raise Exception('unable to authenticate: ' + response.text)
+
+    def get_data(self):
+        headers = {}
+        headers['Content-Type'] = 'application/json'
+        headers['Authorization'] = 'Bearer {0}'.format(self.access_token)
+        url = 'https://api.adform.com/v1/buyer/campaigns'
+        payload = ''
+        self.response = requests.post(
+            url,
+            headers=headers,
+            data=payload,
+            verify=False
+            )
