@@ -41,7 +41,7 @@ class Connection(object):
         headers['Authorization'] = 'Bearer {0}'.format(self.access_token)
         url = 'https://api.adform.com/v1/buyer/campaigns'
         payload = ''
-        self.response = requests.post(
+        self.response = requests.get(
             url,
             headers=headers,
             data=payload,
