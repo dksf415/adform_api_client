@@ -15,7 +15,6 @@ class Connection(object):
             
         if self.access_token is None:
             self.get_access_token()
-            self.get_data()
 
     def get_access_token(self):
 
@@ -34,16 +33,3 @@ class Connection(object):
                 self.access_token = obj['access_token']
             else:
                 raise Exception('unable to authenticate: ' + response.text)
-
-    def get_data(self):
-        headers = {}
-        headers['Content-Type'] = 'application/json'
-        headers['Authorization'] = 'Bearer {0}'.format(self.access_token)
-        url = 'https://api.adform.com/v1/buyer/campaigns'
-        payload = ''
-        self.response = requests.get(
-            url,
-            headers=headers,
-            data=payload,
-            verify=False
-            )
