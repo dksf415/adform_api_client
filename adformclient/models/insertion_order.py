@@ -4,9 +4,9 @@ import datetime
 
 from adformclient.models.base import Base
 
-class Campaign(Base):
+class InsertionOrder(Base):
 
-    object = "campaigns"
+    object = "insertionOrders"
 
-    def find_by_id(self, id):
+    def find_by_advertiser(self, id):
         pass
