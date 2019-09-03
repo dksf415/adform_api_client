@@ -4,9 +4,9 @@ import datetime
 
 from adformclient.models.base import Base
 
-class Advertiser(Base):
+class LineItem(Base):
 
-    object = "advertisers"
+    object = "lineItems"
 
-    def find_by_name(self):
+    def find_by_insertion_order(self, id):
         pass
