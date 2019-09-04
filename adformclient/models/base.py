@@ -21,12 +21,72 @@ class Base:
 
         return headers
 
-    def get_by_id(self, id):
+    def make_request(self, method, url, payload=None):
         """
-        :param id:
+
+        :param method: String
+        :param url:
+        :param payload:
+        :return: Response object
+        """
+        headers = self.api_headers()
+
+        if method == "GET":
+            self.curl = "curl -H 'Content-Type: application/json' -H 'Authorization:Bearer {0}' '{1}'".format(
+                headers,
+                url
+            )
+            response = requests.get(
+                url,
+                headers=headers,
+                verify=False
+            )
+
+        elif method == "POST":
+            self.curl = "curl -XPOST -H 'Content-Type: application/json' -H 'Authorization:Bearer {0}' -d '{1}' '{2}'".format(
+                headers,
+                payload,
+                url
+            )
+            response = requests.post(
+                url,
+                headers=headers,
+                data=payload,
+                verify=False
+            )
+
+        elif method == "PUT":
+            self.curl = "curl -XPUT -H 'Content-Type: application/json' -H 'Authorization:Bearer {0}' -d '{1}' '{2}'".format(
+                headers,
+                payload,
+                url
+            )
+            response = requests.post(
+                url,
+                headers=headers,
+                data=payload,
+                verify=False
+            )
+
+        return response
+
+    def get_response_list(self, response):
+        """
+        :param response:
         :return: JSON object
         """
-        url = "{0}/{1}/{2}".format(self.url_metadata, self.object, id)
-        response = self.make_request("GET", url)
+        data = json.loads(response.text)
 
-        return self.get_response_object(response)
+        rval = {}
+        rval["response_code"] = response.status_code
+        rval["request_body"] = self.curl
+        if response.status_code == 200:
+            rval["msg_type"] = "success"
+            rval["msg"] = "Success"
+            rval["data"] = data.get('data')
+        else:
+            rval["msg_type"] = "error"
+            rval["msg"] = data.get('errors')
+            rval["data"] = data
+
+        return json.dumps(rval)
