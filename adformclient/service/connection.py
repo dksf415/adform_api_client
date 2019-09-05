@@ -31,5 +31,3 @@ class Connection(object):
             obj = json.loads(response.text)
             if 'access_token' in obj:
                 self.access_token = obj['access_token']
-            else:
-                raise Exception('unable to authenticate: ' + response.text)

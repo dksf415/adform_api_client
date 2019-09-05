@@ -17,9 +17,7 @@ class Campaign(Base):
         :param id:
         :return: JSON array
         """
-        url = "{0}/campaigns/{1}".format(self.url_metadata, id)
+        url = "{0}/advertisers/{1}/campaignLabels".format(self.url_metadata, id)
         response = self.make_request("GET", url)
-        print('Hello from the package------------')
-        print(response)
 
         return self.get_response_list(response)
