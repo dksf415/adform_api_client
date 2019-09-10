@@ -8,10 +8,6 @@ class Connection(object):
     url_token = "https://id.adform.com/sts/connect/token"
 
     def __init__(self, client_id=None, client_secret=None, scope=None, grant_type="client_credentials"):
-        print("CLIENT SPEAKING!!!!!!!!!!!!!!!")
-        print(client_id)
-        print(client_secret)
-        print(scope)
         self.client_id = client_id
         self.client_secret = client_secret
         self.scope = scope
