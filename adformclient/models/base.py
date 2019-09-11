@@ -15,6 +15,15 @@ class Base:
         """
         :return:
         """
+        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
+        print(self.connection.access_token)
+        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
         headers = {}
         headers['Content-Type'] = 'application/json'
         headers['Authorization'] = 'Bearer {0}'.format(self.connection.access_token)
