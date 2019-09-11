@@ -15,15 +15,6 @@ class Base:
         """
         :return:
         """
-        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
-        print(self.connection.access_token)
-        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client token --------------xxxxxxxxxxxx')
         headers = {}
         headers['Content-Type'] = 'application/json'
         headers['Authorization'] = 'Bearer {0}'.format(self.connection.access_token)
@@ -39,8 +30,27 @@ class Base:
         :return: Response object
         """
         headers = self.api_headers()
+        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
+        print(headers)
+        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
+        print(url)
+        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
+        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
 
         if method == "GET":
+            print('----------------------getting----------------------')
             self.curl = "curl -H 'Content-Type: application/json' -H 'Authorization:Bearer {0}' '{1}'".format(
                 headers,
                 url
