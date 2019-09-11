@@ -39,7 +39,6 @@ class Base:
             response = requests.get(
                 url,
                 headers=headers,
-                data=payload,
                 verify=False
             )
 
