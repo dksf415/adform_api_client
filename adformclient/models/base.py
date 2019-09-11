@@ -30,27 +30,8 @@ class Base:
         :return: Response object
         """
         headers = self.api_headers()
-        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
-        print(headers)
-        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client headers --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
-        print(url)
-        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
-        print('xxxxxxxxxx------------ client url --------------xxxxxxxxxxxx')
 
         if method == "GET":
-            print('----------------------getting----------------------')
             self.curl = "curl -H 'Content-Type: application/json' -H 'Authorization:Bearer {0}' '{1}'".format(
                 headers,
                 url
@@ -58,6 +39,7 @@ class Base:
             response = requests.get(
                 url,
                 headers=headers,
+                data=payload,
                 verify=False
             )
 
