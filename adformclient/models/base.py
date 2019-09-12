@@ -83,7 +83,7 @@ class Base:
         if response.status_code == 200:
             rval["msg_type"] = "success"
             rval["msg"] = "Success"
-            rval["data"] = data.get('data')
+            rval["data"] = data.get('labelGroups')
         else:
             rval["msg_type"] = "error"
             rval["msg"] = data.get('errors')
