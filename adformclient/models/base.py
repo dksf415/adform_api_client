@@ -6,7 +6,6 @@ import datetime
 class Base:
 
     url_metadata = "https://api.adform.com/v1/buyer"
-    advertiser_scope = 'https://api.adform.com/scope/buyer.advertisers'        
     object = None
     access_token = None
     connection = None
@@ -18,7 +17,7 @@ class Base:
         """
         :return:
         """
-        self.access_token = self.connection.get_access_token(self.advertiser_scope)
+        self.access_token = self.connection.get_access_token(scope)
 
         headers = {}
         headers['Content-Type'] = 'application/json'
