@@ -2,14 +2,16 @@ import logging
 import json
 import requests
 import datetime
+from adformclient.service.connection import Connection
 
 class Base:
 
     url_metadata = "https://api.adform.com/v1/buyer"
+    advertiser_scope = 'https://api.adform.com/scope/buyer.advertisers'
     object = None
 
     def __init__(self, connection=None):
-        self.connection = connection
+        self.connection = Connection()
 
     def api_headers(self):
         """
