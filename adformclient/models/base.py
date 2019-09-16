@@ -33,7 +33,7 @@ class Base:
         :param payload:
         :return: Response object
         """
-        headers = self.api_headers()
+        headers = self.api_headers(scope)
 
         if method == "GET":
             self.curl = "curl -H 'Content-Type: application/json' -H 'Authorization:Bearer {0}' '{1}'".format(
