@@ -22,3 +22,15 @@ class Campaign(Base):
         response = self.make_request("GET", url, scope)
 
         return self.get_response_list(response)
+
+    def get_campaigns(self):
+        """
+
+        :param id:
+        :return: JSON array
+        """
+        scope = 'https://api.adform.com/scope/buyer.campaigns.api'
+        url = "{0}/buyer/campaigns"
+        response = self.make_request("GET", url, scope)
+
+        return self.get_response_list(response)
