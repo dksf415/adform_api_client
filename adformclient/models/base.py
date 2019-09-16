@@ -5,16 +5,21 @@ import datetime
 
 class Base:
 
-    url_metadata = "https://api.adform.com/v1/buyer"
-    advertiser_scope = 'https://api.adform.com/scope/buyer.advertisers'
+    url_metadata = None
+    advertiser_scope = None
     object = None
     access_token = None
+
+    def __init__(self, connection=None):
+#        self.connection = connection
+        self.url_metadata = "https://api.adform.com/v1/buyer"
+        self.advertiser_scope = 'https://api.adform.com/scope/buyer.advertisers'
 
     def api_headers(self, scope):
         """
         :return:
         """
-        self.access_token = connection.get_access_token(scope)
+        self.access_token = self.get_access_token(self.advertiser_scope)
 
         headers = {}
         headers['Content-Type'] = 'application/json'
