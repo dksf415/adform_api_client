@@ -8,21 +8,24 @@ class Base:
     url_metadata = "https://api.adform.com/v1/buyer"
     advertiser_scope = 'https://api.adform.com/scope/buyer.advertisers'
     object = None
+    access_token = None
 
     def __init__(self, connection=None):
         self.connection = connection
 
-    def api_headers(self):
+    def api_headers(self, scope):
         """
         :return:
         """
+        self.access_token = connection.get_access_token(scope)
+
         headers = {}
         headers['Content-Type'] = 'application/json'
-        headers['Authorization'] = 'Bearer {0}'.format(self.connection.access_token)
+        headers['Authorization'] = 'Bearer {0}'.format(self.access_token)
 
         return headers
 
-    def make_request(self, method, url, payload=None):
+    def make_request(self, method, url, scope, payload=None):
         """
 
         :param method: String
