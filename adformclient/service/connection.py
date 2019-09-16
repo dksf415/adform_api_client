@@ -19,7 +19,7 @@ class Connection(object):
             'client_id': self.client_id,
             'client_secret': self.client_secret,
             'grant_type': self.grant_type,
-            'scope': self.scope
+            'scope': scope
         }
 
         response = requests.post(self.url_token, data=data)
