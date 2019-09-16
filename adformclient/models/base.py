@@ -10,9 +10,6 @@ class Base:
     object = None
     access_token = None
 
-    def __init__(self, connection=None):
-        self.connection = connection
-
     def api_headers(self, scope):
         """
         :return:
