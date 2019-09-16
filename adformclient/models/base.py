@@ -5,15 +5,15 @@ import datetime
 
 class Base:
 
-    url_metadata = None
-    advertiser_scope = None
+
+    url_metadata = "https://api.adform.com/v1/buyer"
+    advertiser_scope = 'https://api.adform.com/scope/buyer.advertisers'        
     object = None
     access_token = None
+    connection = None
 
     def __init__(self, connection=None):
-#        self.connection = connection
-        self.url_metadata = "https://api.adform.com/v1/buyer"
-        self.advertiser_scope = 'https://api.adform.com/scope/buyer.advertisers'
+        self.connection = connection
 
     def api_headers(self, scope):
         """
