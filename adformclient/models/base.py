@@ -2,7 +2,6 @@ import logging
 import json
 import requests
 import datetime
-from adformclient.service.connection import Connection
 
 class Base:
 
@@ -11,7 +10,7 @@ class Base:
     object = None
 
     def __init__(self, connection=None):
-        self.connection = Connection()
+        self.connection = connection
 
     def api_headers(self):
         """
