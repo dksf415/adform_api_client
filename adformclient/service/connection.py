@@ -26,5 +26,6 @@ class Connection(object):
 
         if response is not None:
             obj = json.loads(response.text)
+            print('-------------------conneciton obj {}'.format(obj))
             if 'access_token' in obj:
                 return obj['access_token']
