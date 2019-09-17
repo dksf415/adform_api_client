@@ -14,7 +14,7 @@ class Connection(object):
         self.grant_type = grant_type
             
     def get_access_token(self, scope):
-        print('xxxxxxxxxxxx------client scope {}'.format(scope))
+
         data = {
             'client_id': self.client_id,
             'client_secret': self.client_secret,
@@ -26,6 +26,8 @@ class Connection(object):
 
         if response is not None:
             obj = json.loads(response.text)
-            print('-------------------conneciton obj {}'.format(obj))
             if 'access_token' in obj:
                 return obj['access_token']
+            else:
+                print('Error retrieving access token.')
+                return None
