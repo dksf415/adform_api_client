@@ -29,7 +29,7 @@ class Campaign(Base):
         :param id:
         :return: JSON array
         """
-        scope = 'https://api.adform.com/scope/buyer.campaigns.api/'
+        scope = 'https://api.adform.com/scope/buyer.campaigns.api'
         url = "{0}/campaigns".format(self.url_metadata)
         response = self.make_request("GET", url, scope)
 
