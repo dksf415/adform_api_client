@@ -33,10 +33,6 @@ class Base:
         :param payload:
         :return: Response object
         """
-
-        print("-===========++++++++++++++scope: {}".format(scope))
-        print("-============`````````````''url: {}".format(url))
-
         headers = self.api_headers(scope)
 
         if method == "GET":
