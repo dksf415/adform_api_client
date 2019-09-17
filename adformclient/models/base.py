@@ -80,14 +80,14 @@ class Base:
         :return: JSON object
         """
         data = json.loads(response.text)
-
+        print('xxxxxxxxxxxxxxxxx {}'.format(data))
         rval = {}
         rval["response_code"] = response.status_code
         rval["request_body"] = self.curl
         if response.status_code == 200:
             rval["msg_type"] = "success"
             rval["msg"] = "Success"
-            rval["data"] = data.get('labelGroups')
+            rval["data"] = data
         else:
             rval["msg_type"] = "error"
             rval["msg"] = data.get('errors')
