@@ -32,5 +32,5 @@ class Campaign(Base):
         scope = 'https://api.adform.com/scope/buyer.campaigns.api'
         url = "{0}/campaigns".format(self.url_metadata)
         response = self.make_request("GET", url, scope)
-        print('xxxxxxxxxxxxxxxxxx {}'.format(repsonse))
+        print('xxxxxxxxxxxxxxxxxx {}'.format(response))
         return self.get_response_list(response)
