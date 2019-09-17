@@ -14,7 +14,7 @@ class Connection(object):
         self.grant_type = grant_type
             
     def get_access_token(self, scope):
-
+        print('xxxxxxxxxxxx------client scope {}'.format(scope))
         data = {
             'client_id': self.client_id,
             'client_secret': self.client_secret,
