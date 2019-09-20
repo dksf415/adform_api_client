@@ -28,7 +28,8 @@ class Campaign(Base):
             response = self.make_request("GET", url, scope)
             print(response)
             print(response.__dict__.keys())
-            if response['status_code'] == 200:
+            data = json.loads(response)
+            if data.get('status_code') == 200:
                 for creative in response.get('data').get('response'):
                     creatives.append(creative)
 
