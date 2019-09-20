@@ -19,6 +19,7 @@ class Campaign(Base):
         """
         scope = 'https://api.adform.com/scope/buyer.campaigns.api'
         url = "{0}/campaigns?advertisers={1}".format(self.url_metadata, id)
+        print('API URL: {}'.format(url))
         response = self.make_request("GET", url, scope)
 
         return self.get_response_list(response)
