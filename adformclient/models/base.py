@@ -21,6 +21,7 @@ class Base:
 
         headers = {}
         headers['Content-Type'] = 'application/json'
+        headers['Return-Total-Count'] = 'true'
         headers['Authorization'] = 'Bearer {0}'.format(self.access_token)
 
         return headers

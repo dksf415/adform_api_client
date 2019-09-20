@@ -17,11 +17,28 @@ class Campaign(Base):
         :param id:
         :return: JSON array
         """
+        creatives = []
+        offset = 0
+        limit = 100
         scope = 'https://api.adform.com/scope/buyer.campaigns.api'
-        url = "{0}/campaigns?advertisers={1}".format(self.url_metadata, id)
-        response = self.make_request("GET", url, scope)
 
-        return self.get_response_list(response)
+        while True:
+
+            url = "{0}/campaigns?offset={}&limit={}&advertisers={1}".format(self.url_metadata, offset, limit, id)
+            response = self.make_request("GET", url, scope)
+
+            if response.get('msg_type') == "success":
+                for creative in response.get('data').get('response'):
+                    creatives.append(creative)
+
+            if len(creatives) < int(response.headers['Total-Count']):
+                offset = offset + limit
+            else:
+                break
+
+        print(type(response))
+        print(response)
+        #return self.get_response_list(response)
 
     def get_campaigns(self):
         """
