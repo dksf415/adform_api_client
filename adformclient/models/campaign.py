@@ -28,7 +28,7 @@ class Campaign(Base):
             response = self.make_request("GET", url, scope)
             print(response)
             print(response.__dict__.keys())
-            if response.get('msg_type') == "success":
+            if response['status_code'] == 200:
                 for creative in response.get('data').get('response'):
                     creatives.append(creative)
 
