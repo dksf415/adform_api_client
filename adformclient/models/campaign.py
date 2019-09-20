@@ -29,7 +29,7 @@ class Campaign(Base):
 
             if response.status_code == 200:
                 # No need to paginate
-                if response.headers['Total-Count'] == 0 or response.headers['Total-Count'] < limit:
+                if response.headers['Total-Count'] == 0 or response.headers['Total-Count'] <= limit:
                     return self.get_response_list(response)
                 else:
                     for creative in response.get('data').get('response'):
