@@ -25,13 +25,9 @@ class Campaign(Base):
         while True:
 
             url = "{}/campaigns?offset={}&limit={}&advertisers={}".format(self.url_metadata, offset, limit, id)
-            response = self.make_request("GET", url, scope)
-            print(url)
-            print(response)
-            print(response.__dict__.keys())
-            print(response.text)
+            response = json.loads(self.make_request("GET", url, scope))
 
-            if data.get('status_code') == 200:
+            if response.get('msg_type') == "success":
                 for creative in response.get('data').get('response'):
                     creatives.append(creative)
 
