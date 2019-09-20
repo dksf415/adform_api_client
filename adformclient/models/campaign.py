@@ -29,7 +29,9 @@ class Campaign(Base):
             print(response)
             print(response.__dict__.keys())
             print(response.text)
-            data = json.loads(response.text)
+            data = response.json()
+            print(data)
+            print(data.__dict__.keys())
             if data.get('status_code') == 200:
                 for creative in response.get('data').get('response'):
                     creatives.append(creative)
