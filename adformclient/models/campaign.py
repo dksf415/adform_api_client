@@ -25,9 +25,10 @@ class Campaign(Base):
         while True:
 
             url = "{}/campaigns?offset={}&limit={}&advertisers={}".format(self.url_metadata, offset, limit, id)
-            response = json.loads(self.make_request("GET", url, scope))
-
-            if response.get('msg_type') == "success":
+            response = self.make_request("GET", url, scope)
+            data = json.loads(response.text)
+            print(data)
+            if response.status_code == 200:
                 for creative in response.get('data').get('response'):
                     creatives.append(creative)
 
@@ -36,8 +37,7 @@ class Campaign(Base):
             else:
                 break
 
-        print(type(response))
-        print(response)
+
         #return self.get_response_list(response)
 
     def get_campaigns(self):
