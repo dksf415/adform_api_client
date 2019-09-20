@@ -26,14 +26,14 @@ class Campaign(Base):
 
             url = "{}/campaigns?offset={}&limit={}&advertisers={}".format(self.url_metadata, offset, limit, id)
             response = self.make_request("GET", url, scope)
-            print('Total count: {}'.format(response.headers['Total-Count']))
-            print(response.raw)
-            print(response.__dict__.keys())  
-            data = json.loads(response.text)
-            print(data)
+
             if response.status_code == 200:
-                for creative in response.get('data').get('response'):
-                    creatives.append(creative)
+                # No need to paginate
+                if response.headers['Total-Count'] == 0 or response.headers['Total-Count'] < limit:
+                    return self.get_response_list(response)
+                else:
+                    for creative in response.get('data').get('response'):
+                        creatives.append(creative)
 
             if len(creatives) < int(response.headers['Total-Count']):
                 offset = offset + limit
