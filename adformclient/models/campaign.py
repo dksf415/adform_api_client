@@ -28,11 +28,14 @@ class Campaign(Base):
             response = self.make_request("GET", url, scope)
 
             if response.status_code == 200:
-                # No need to paginate
+
+                # Not enough records to paginate
                 if int(response.headers['Total-Count']) == 0 or int(response.headers['Total-Count']) <= limit:
                     return self.get_response_list(response)
                 else:
-                    for creative in response.get('data').get('response'):
+                    creative_data = json.loads(response.text)
+                    for creative in creative_data:
+                        print(creative)
                         creatives.append(creative)
 
             if len(creatives) < int(response.headers['Total-Count']):
