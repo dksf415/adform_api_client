@@ -26,6 +26,7 @@ class Campaign(Base):
 
             url = "{}/campaigns?offset={}&limit={}&advertisers={}".format(self.url_metadata, offset, limit, id)
             response = self.make_request("GET", url, scope)
+            print('Total count: {}'.format(response.headers['Total-Count']))
             print(response.raw)
             print(response.__dict__.keys())  
             data = json.loads(response.text)
