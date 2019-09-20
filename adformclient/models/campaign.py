@@ -24,7 +24,7 @@ class Campaign(Base):
 
         while True:
 
-            url = "{0}/campaigns?offset={}&limit={}&advertisers={1}".format(self.url_metadata, offset, limit, id)
+            url = "{}/campaigns?offset={}&limit={}&advertisers={}".format(self.url_metadata, offset, limit, id)
             response = self.make_request("GET", url, scope)
 
             if response.get('msg_type') == "success":
