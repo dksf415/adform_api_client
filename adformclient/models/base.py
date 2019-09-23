@@ -75,16 +75,16 @@ class Base:
 
         return response
 
-    def get_response_list(self, response):
+    def get_response_list(self, response_text, response_status_code):
         """
         :param response:
         :return: JSON object
         """
-        data = json.loads(response.text)
+        data = json.loads(response_text)
         rval = {}
-        rval["response_code"] = response.status_code
+        rval["response_code"] = response_status_code
         rval["request_body"] = self.curl
-        if response.status_code == 200:
+        if response_status_code == 200:
             rval["msg_type"] = "success"
             rval["msg"] = "Success"
             rval["data"] = data
