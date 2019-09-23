@@ -16,8 +16,8 @@ class LineItem(Base):
         """
         scope = 'https://api.adform.com/scope/buyer.direct.lineitems'
         url = "{0}/fastlineitems".format(self.url_metadata)
-        payload = json.dumps("{'campaignId': '{}'}".format(id))
-        response = self.make_request("POST", url, scope, payload)
+        payload = {'campaignId': id}
+        response = self.make_request("POST", url, scope, json.dumps(payload))
 
         return self.get_response_list(response.text, response.status_code)
 
