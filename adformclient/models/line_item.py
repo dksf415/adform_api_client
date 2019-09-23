@@ -8,7 +8,7 @@ class LineItem(Base):
 
     object = "lineItems"
 
-    def find_by_insertion_order(self, id):
+    def find_by_campaign(self, id):
         """
 
         :param id:
