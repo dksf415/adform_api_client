@@ -26,21 +26,15 @@ class Campaign(Base):
 
             url = "{}/campaigns?offset={}&limit={}&advertisers={}".format(self.url_metadata, offset, limit, id)
             response = self.make_request("GET", url, scope)
-            response.text = 'bueno'
-            print('-------------')
-            print(response.text)
-            print('-------------')
-            return
+
             if response.status_code == 200:
 
                 # Not enough records to paginate
                 if int(response.headers['Total-Count']) == 0 or int(response.headers['Total-Count']) <= limit:
-                    return self.get_response_list(response)
+                    return self.get_response_list(response.text, response.status_code)
                 else:
                     creative_data = json.loads(response.text)
                     for creative in creative_data:
-                        # ADD CREATIVES TO LIST 
-                        print(creative)
                         creatives.append(creative)
 
             if len(creatives) < int(response.headers['Total-Count']):
@@ -48,8 +42,7 @@ class Campaign(Base):
             else:
                 break
 
-        # BUILD RESPONSE HERE
-        #return self.get_response_list(response)
+        return self.get_response_list(json_dumps(creatives), response.status_code)
 
     def get_campaigns(self):
         """
