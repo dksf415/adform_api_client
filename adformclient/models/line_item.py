@@ -18,6 +18,6 @@ class LineItem(Base):
         url = "{0}/orders?campaignId={1}".format(self.url_metadata, id)
         response = self.make_request("GET", url, scope)
 
-        return self.get_response_list(response)
+        return self.get_response_list(response.text, response.status_code)
 
         pass
