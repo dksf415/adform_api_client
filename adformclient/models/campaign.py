@@ -25,8 +25,9 @@ class Campaign(Base):
         while True:
 
             url = "{}/campaigns?offset={}&limit={}&advertisers={}".format(self.url_metadata, offset, limit, id)
-            response = self.make_request("GET", url, scope)
-            print(type(response))
+            r = self.make_request("GET", url, scope)
+            response = r.json()
+            print(response)
             return
             if response.status_code == 200:
 
