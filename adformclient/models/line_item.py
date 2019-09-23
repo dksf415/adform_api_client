@@ -15,8 +15,9 @@ class LineItem(Base):
         :return: JSON array
         """
         scope = 'https://api.adform.com/scope/buyer.direct.lineitems'
-        url = "{0}/orders?campaignId={1}".format(self.url_metadata, id)
-        response = self.make_request("GET", url, scope)
+        url = "{0}/fastlineitems".format(self.url_metadata)
+        payload = "{'campaignId': '{}'}".format(id)
+        response = self.make_request("POST", url, scope, payload)
 
         return self.get_response_list(response.text, response.status_code)
 
