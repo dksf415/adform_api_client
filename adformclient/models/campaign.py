@@ -35,6 +35,7 @@ class Campaign(Base):
                 else:
                     creative_data = json.loads(response.text)
                     for creative in creative_data:
+                        # ADD CREATIVES TO LIST 
                         print(creative)
                         creatives.append(creative)
 
@@ -43,7 +44,7 @@ class Campaign(Base):
             else:
                 break
 
-
+        # BUILD RESPONSE HERE
         #return self.get_response_list(response)
 
     def get_campaigns(self):
