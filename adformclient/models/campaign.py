@@ -42,7 +42,7 @@ class Campaign(Base):
             else:
                 break
 
-        return self.get_response_list(json_dumps(creatives), response.status_code)
+        return self.get_response_list(json.dumps(creatives), response.status_code)
 
     def get_campaigns(self):
         """
