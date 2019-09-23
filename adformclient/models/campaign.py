@@ -25,10 +25,10 @@ class Campaign(Base):
         while True:
 
             url = "{}/campaigns?offset={}&limit={}&advertisers={}".format(self.url_metadata, offset, limit, id)
-            r = self.make_request("GET", url, scope)
-            response = r.json()
+            response = self.make_request("GET", url, scope)
+            response.text = 'bueno'
             print('-------------')
-            print(response)
+            print(response.text)
             print('-------------')
             return
             if response.status_code == 200:
