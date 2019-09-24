@@ -15,7 +15,7 @@ class LineItem(Base):
         :return: JSON array
         """
         scope = 'https://api.adform.com/scope/buyer.rtb.lineitem'
-        url = "{0}/rtb/lineitems?campaignIds={}".format(self.url_metadata, id)
+        url = "{}/rtb/lineitems?campaignIds={}".format(self.url_metadata, id)
         response = self.make_request("POST", url, scope)
 
         return self.get_response_list(response.text, response.status_code)
