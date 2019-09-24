@@ -16,7 +16,7 @@ class LineItem(Base):
         """
         scope = 'https://api.adform.com/scope/buyer.rtb.lineitem'
         url = "{}/rtb/lineitems?campaignIds={}".format(self.url_metadata, id)
-        response = self.make_request("POST", url, scope)
+        response = self.make_request("POST", url, scope, payload='')
 
         return self.get_response_list(response.text, response.status_code)
 
