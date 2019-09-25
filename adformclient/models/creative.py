@@ -21,7 +21,7 @@ class Creative(Base):
 #
 #        pass
 
-    def find_by_line_item(self, id)
+    def find_by_line_item(self, id):
         """
 
         :param id:
