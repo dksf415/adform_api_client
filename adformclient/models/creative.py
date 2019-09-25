@@ -31,6 +31,6 @@ class Creative(Base):
         url = "{}/rtb/lineitems/{}".format(self.url_metadata, id)
         response = self.make_request("GET", url, scope)
         print('-----CREATIVE BY LINE ITEM-------------------------------------------')
-        print(response.text)
+        print(response)
         print('-----CREATIVE BY LINE ITEM-------------------------------------------')
 #        return self.get_response_list(response.text, response.status_code)
