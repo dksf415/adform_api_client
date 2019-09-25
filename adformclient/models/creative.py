@@ -30,5 +30,4 @@ class Creative(Base):
         scope = 'https://api.adform.com/scope/buyer.rtb.lineitem'
         url = "{}/rtb/lineitems/{}".format(self.url_metadata, id)
         response = self.make_request("GET", url, scope)
-        return response
-#        return self.get_response_list(response.text, response.status_code)
+        return self.get_response_list(response.text, response.status_code)
