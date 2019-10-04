@@ -75,6 +75,16 @@ class Base:
 
         return response
 
+    def get_by_id(self, id):
+        """
+        :param id:
+        :return: JSON object
+        """
+        url = "{0}/{1}/{2}".format(self.url_metadata, self.object, id)
+        response = self.make_request("GET", url, self.scope)
+
+        return self.get_response_object(response)
+
     def get_response_list(self, response_text, response_status_code):
         """
         :param response:
@@ -95,12 +105,23 @@ class Base:
 
         return json.dumps(rval)
 
-    def get_by_id(self, id):
+    def get_response_object(self, response):
         """
-        :param id:
+        :param response:
         :return: JSON object
         """
-        url = "{0}/{1}/{2}".format(self.url_metadata, self.object, id)
-        response = self.make_request("GET", url, self.scope)
+        data = json.loads(response.text)
 
-        return self.get_response_object(response)
+        rval = {}
+        rval["response_code"] = response.status_code
+        rval["request_body"] = self.curl
+        if response.status_code == 200:
+            rval["msg_type"] = "success"
+            rval["msg"] = "Success"
+            rval["data"] = data.get('data')[0]
+        else:
+            rval["msg_type"] = "error"
+            rval["msg"] = data.get('errors')
+            rval["data"] = data
+
+        return json.dumps(rval)
