@@ -7,6 +7,7 @@ from adformclient.models.base import Base
 class Campaign(Base):
 
     object = "campaigns"
+    scope = 'https://api.adform.com/scope/buyer.campaigns.api'
 
     def find_by_id(self, id):
         pass
@@ -20,12 +21,11 @@ class Campaign(Base):
         creatives = []
         offset = 0
         limit = 100
-        scope = 'https://api.adform.com/scope/buyer.campaigns.api'
 
         while True:
 
             url = "{}/campaigns?subtypes=Rtb&offset={}&limit={}&advertisers={}".format(self.url_metadata, offset, limit, id)
-            response = self.make_request("GET", url, scope)
+            response = self.make_request("GET", url, self.scope)
 
             if response.status_code == 200:
 
@@ -50,9 +50,8 @@ class Campaign(Base):
         :param id:
         :return: JSON array
         """
-        scope = 'https://api.adform.com/scope/buyer.campaigns.api'
         url = "{0}/campaigns?subtypes=Rtb".format(self.url_metadata)
-        response = self.make_request("GET", url, scope)
+        response = self.make_request("GET", url, self.scope)
 
         return self.get_response_list(response)
     

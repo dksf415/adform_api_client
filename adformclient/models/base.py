@@ -101,6 +101,6 @@ class Base:
         :return: JSON object
         """
         url = "{0}/{1}/{2}".format(self.url_metadata, self.object, id)
-        response = self.make_request("GET", url)
+        response = self.make_request("GET", url, self.scope)
 
         return self.get_response_object(response)
