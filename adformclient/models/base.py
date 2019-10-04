@@ -111,14 +111,14 @@ class Base:
         :return: JSON object
         """
         data = json.loads(response.text)
-
+        print("client data: {}".format(data))
         rval = {}
         rval["response_code"] = response.status_code
         rval["request_body"] = self.curl
         if response.status_code == 200:
             rval["msg_type"] = "success"
             rval["msg"] = "Success"
-            rval["data"] = data.get('data')[0]
+            rval["data"] = data
         else:
             rval["msg_type"] = "error"
             rval["msg"] = data.get('errors')
