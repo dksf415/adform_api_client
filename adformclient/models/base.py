@@ -111,7 +111,6 @@ class Base:
         :return: JSON object
         """
         data = json.loads(response.text)
-        print("client data: {}".format(data))
         rval = {}
         rval["response_code"] = response.status_code
         rval["request_body"] = self.curl
