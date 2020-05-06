@@ -9,7 +9,7 @@ setuptools.setup(
     author="Dean Kondo",
     author_email="deankondo@gmail.com",
     description="Simple wrapper for AdForm API",
-    url="https://github.com/accuenmedia/adform-api-client",
+    url="https://github.com/dksf415/adform-api-client",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3.6.7",
