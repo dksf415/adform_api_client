@@ -7,7 +7,7 @@ setuptools.setup(
     name="adformclient",
     version="0.1.dev0",
     author="Dean Kondo",
-    author_email="deankondo@annalect.com",
+    author_email="deankondo@gmail.com",
     description="Simple wrapper for AdForm API",
     url="https://github.com/accuenmedia/adform-api-client",
     packages=setuptools.find_packages(),
